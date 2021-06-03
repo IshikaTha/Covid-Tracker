@@ -19,6 +19,7 @@ public class StateWiseAdapter extends RecyclerView.Adapter<StateWiseAdapter.view
 
     Context context;
     private ArrayList<StateData> list;
+    private String searchText = "";
 
     public StateWiseAdapter(Context context, ArrayList<StateData> list) {
         this.context = context;
@@ -42,6 +43,11 @@ public class StateWiseAdapter extends RecyclerView.Adapter<StateWiseAdapter.view
 
     }
 
+    public void filterList(ArrayList<StateData> filteredList, String text) {
+        list = filteredList;
+        this.searchText = text;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
         return list.size();

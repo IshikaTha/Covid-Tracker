@@ -87,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        stateWise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StateWiseDataActivity.class);
+                startActivity(intent);
+            }
+        });
         worldData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
