@@ -16,7 +16,7 @@
         <EditText
             android:id="@+id/searchState"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_margin="5dp"
             android:background="@drawable/search_bg"
             android:drawableStart="@drawable/ic_search"

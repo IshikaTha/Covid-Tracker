@@ -40,7 +40,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private TextView confirmed, confirmed_new, active, active_new, recovered, recovered_new, death, death_new, sample, sample_new, time, date;
-    private MaterialCardView worldData;
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private PieChart pieChart;
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.time);
         date = findViewById(R.id.date);
         MaterialCardView stateWise = findViewById(R.id.stateWise);
-        worldData = findViewById(R.id.worldData);
+        MaterialCardView worldData = findViewById(R.id.worldData);
 
         swipeRefreshLayout = findViewById(R.id.swipe);
         pieChart = findViewById(R.id.piechart);

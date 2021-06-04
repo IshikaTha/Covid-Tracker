@@ -31,7 +31,7 @@ public class WorldDataActivity extends AppCompatActivity {
     private TextView confirmed, confirmed_new, active, active_new, recovered, recovered_new, death, death_new, sample, sample_new, countryData;
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    private PieChart pieChart;
+    private PieChart pieChart1;
 
     private String Confirmed, Confirmed_new, Active, Recovered, Recovered_new, Death, Death_new, Sample, Sample_new;
     private int Active_new;
@@ -60,7 +60,7 @@ public class WorldDataActivity extends AppCompatActivity {
         countryData = findViewById(R.id.countryData);
 
         swipeRefreshLayout = findViewById(R.id.worldSwipe);
-        pieChart = findViewById(R.id.piechartW);
+        pieChart1 = findViewById(R.id.piechartW);
 
         countryData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class WorldDataActivity extends AppCompatActivity {
         ShowDialog(this);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String url = "https://corona.lmao.ninja/v2/all";
-        pieChart.clearChart();
+        pieChart1.clearChart();
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -126,11 +126,11 @@ public class WorldDataActivity extends AppCompatActivity {
 
                                             sample.setText(NumberFormat.getInstance().format(Long.parseLong(Sample)));
 
-                                            pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(Active), Color.parseColor("#FFFBC233")));
-                                            pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(Recovered), Color.parseColor("#FF08A045")));
-                                            pieChart.addPieSlice(new PieModel("Deceased", Integer.parseInt(Death), Color.parseColor("#FFF6404F")));
+                                            pieChart1.addPieSlice(new PieModel("Active", Integer.parseInt(Active), Color.parseColor("#FFFBC233")));
+                                            pieChart1.addPieSlice(new PieModel("Recovered", Integer.parseInt(Recovered), Color.parseColor("#FF08A045")));
+                                            pieChart1.addPieSlice(new PieModel("Deceased", Integer.parseInt(Death), Color.parseColor("#FFF6404F")));
                                             progressDialog.dismiss();
-                                            pieChart.startAnimation();
+                                            pieChart1.startAnimation();
                                         }
                                     }, 1000);
                         } catch (JSONException e) {

@@ -1,6 +1,7 @@
 package com.example.covidtracker.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covidtracker.Model.StateData;
 import com.example.covidtracker.R;
+import com.example.covidtracker.StateDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,22 @@ public class StateWiseAdapter extends RecyclerView.Adapter<StateWiseAdapter.view
         String StateTotal = stateData.getConfirmed();
         holder.stateName.setText(StateName);
         holder.stateCases.setText(StateTotal);
+        holder.stateWiseL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, StateDetailsActivity.class);
+                intent.putExtra("state", stateData.getState());
+                intent.putExtra("confirmed", stateData.getConfirmed());
+                intent.putExtra("deltaconfirmed", stateData.getCofirmed_new());
+                intent.putExtra("active", stateData.getActive());
+                intent.putExtra("deaths", stateData.getDeath());
+                intent.putExtra("deltadeaths", stateData.getDeath_new());
+                intent.putExtra("recovered", stateData.getRecovered());
+                intent.putExtra("deltarecovered", stateData.getRecovered_new());
+                intent.putExtra("lastupdatedtime", stateData.getLastUpdate());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
