@@ -91,7 +91,7 @@ public class StateWiseDataActivity extends AppCompatActivity {
                 filteredList.add(item);
             }
         }
-        stateWiseAdapter.filterList(filteredList, text);
+        stateWiseAdapter.filterList(filteredList);
     }
 
     private void fetchStateData() {

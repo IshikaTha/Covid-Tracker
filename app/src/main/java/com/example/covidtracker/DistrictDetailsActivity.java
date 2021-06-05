@@ -6,76 +6,58 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
-
-import com.google.android.material.card.MaterialCardView;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.text.NumberFormat;
 
-public class StateDetailsActivity extends AppCompatActivity {
-    private TextView confirmed, confirmed_new, active, active_new, recovered, recovered_new, death, death_new, dateS;
+public class DistrictDetailsActivity extends AppCompatActivity {
+    private TextView confirmed, confirmed_new, active, active_new, recovered, recovered_new, death, death_new;
 
     private PieChart pieChart;
 
-    private String StateN, Confirmed, Confirmed_new, Active, Recovered, Recovered_new, Death, Death_new, updateTime;
+    private String District, Confirmed, Confirmed_new, Active, Recovered, Recovered_new, Death, Death_new;
 
-    private int Active_new;
 
-    MaterialCardView district;
+    MainActivity mainActivity = new MainActivity();
+    public String conf_new = "confirm";
+    public String rec_new = "recovered";
+    public String dea_new = "deceased";
 
-    private MainActivity mainActivity = new MainActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_state_details);
+        setContentView(R.layout.activity_district_details);
 
-        confirmed = findViewById(R.id.confirmedS);
-        confirmed_new = findViewById(R.id.confirmed_newS);
-        active = findViewById(R.id.activeS);
-        active_new = findViewById(R.id.active_newS);
-        recovered_new = findViewById(R.id.recovered_newS);
-        recovered = findViewById(R.id.recoveredS);
+        confirmed = findViewById(R.id.confirmedD);
+        confirmed_new = findViewById(R.id.confirmed_newD);
+        active = findViewById(R.id.activeD);
+        recovered_new = findViewById(R.id.recovered_newD);
+        recovered = findViewById(R.id.recoveredD);
 
-        death = findViewById(R.id.deathS);
-        death_new = findViewById(R.id.death_newS);
-        dateS = findViewById(R.id.dateS);
+        death = findViewById(R.id.deathD);
+        death_new = findViewById(R.id.death_newD);
 
-        district = findViewById(R.id.district);
-
-        pieChart = findViewById(R.id.piechartS);
+        pieChart = findViewById(R.id.piechartD);
 
         Intent intent = getIntent();
-        StateN = intent.getStringExtra("state");
+        District = intent.getStringExtra("district");
         Confirmed = intent.getStringExtra("confirmed");
-        Confirmed_new = intent.getStringExtra("deltaconfirmed");
+        Confirmed_new = intent.getStringExtra(conf_new);
         Active = intent.getStringExtra("active");
         Death = intent.getStringExtra("deaths");
-        Death_new = intent.getStringExtra("deltadeaths");
+        Death_new = intent.getStringExtra(dea_new);
         Recovered = intent.getStringExtra("recovered");
-        Recovered_new = intent.getStringExtra("deltarecovered");
-        updateTime = intent.getStringExtra("lastupdatedtime");
+        Recovered_new = intent.getStringExtra(rec_new);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(StateN);
-
-        district.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StateDetailsActivity.this, DistrictWiseActivity.class);
-                intent.putExtra("state", StateN);
-                startActivity(intent);
-            }
-        });
-
-        fetchStateDetails();
+        getSupportActionBar().setTitle(District);
+        fetchDistrictDetails();
     }
-
-    private void fetchStateDetails() {
+    private void fetchDistrictDetails() {
         mainActivity.ShowDialog(this);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -85,17 +67,12 @@ public class StateDetailsActivity extends AppCompatActivity {
                 confirmed_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(Confirmed_new)));
 
                 active.setText(NumberFormat.getInstance().format(Integer.parseInt(Active)));
-                Active_new = Integer.parseInt(Confirmed_new) - Integer.parseInt(Recovered_new) - Integer.parseInt(Death_new);
-                active_new.setText("+" + NumberFormat.getInstance().format(Active_new < 0 ? 0:Active_new));
 
                 death.setText(NumberFormat.getInstance().format(Integer.parseInt(Death)));
                 death_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(Death_new)));
 
                 recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(Recovered)));
                 recovered_new.setText(NumberFormat.getInstance().format(Integer.parseInt(Recovered_new)));
-
-                String formatDate = mainActivity.FormatDate(updateTime, 0);
-                dateS.setText(formatDate);
 
                 pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(Active), Color.parseColor("#FFFBC233")));
                 pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(Recovered), Color.parseColor("#FF08A045")));
@@ -107,8 +84,8 @@ public class StateDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
+    public boolean onNavigateUp() {
         onBackPressed();
-        return super.onSupportNavigateUp();
+        return super.onNavigateUp();
     }
 }

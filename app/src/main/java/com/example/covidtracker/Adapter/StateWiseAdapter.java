@@ -21,7 +21,7 @@ public class StateWiseAdapter extends RecyclerView.Adapter<StateWiseAdapter.view
 
     Context context;
     private ArrayList<StateData> list;
-    private String searchText = "";
+    //private String searchText = "";
 
     public StateWiseAdapter(Context context, ArrayList<StateData> list) {
         this.context = context;
@@ -61,9 +61,9 @@ public class StateWiseAdapter extends RecyclerView.Adapter<StateWiseAdapter.view
 
     }
 
-    public void filterList(ArrayList<StateData> filteredList, String text) {
+    public void filterList(ArrayList<StateData> filteredList) {
         list = filteredList;
-        this.searchText = text;
+        //this.searchText = text;
         notifyDataSetChanged();
     }
     @Override
