@@ -14,7 +14,9 @@
         android:theme="@style/Theme.CovidTracker"
         android:usesCleartextTraffic="true"
         tools:targetApi="21">
-        <activity android:name=".DistrictDetailsActivity"></activity>
+        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".CountryDetailActivity" />
+        <activity android:name=".DistrictDetailsActivity" />
         <activity android:name=".DistrictWiseActivity" />
         <activity android:name=".StateDetailsActivity" />
         <activity android:name=".StateWiseDataActivity" />

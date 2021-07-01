@@ -111,6 +111,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+
+
+
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -317,38 +320,50 @@
                 app:cardElevation="4dp">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:gravity="center"
-                        android:text="Total cases"
-                        android:textColor="@color/pink"
-                        android:textSize="16sp"/>
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_new_normality"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:gravity="center"
+                            android:text="Total cases"
+                            android:textColor="@color/pink"
+                            android:textSize="16sp"/>
 
-                    <TextView
-                        android:id="@+id/samplesW"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/samplesW"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
 
-                    <TextView
-                        android:id="@+id/sample_newW"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="25dp"/>
+                        <TextView
+                            android:id="@+id/sample_newW"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="25dp"/>
+                    </LinearLayout>
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
